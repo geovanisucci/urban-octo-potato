@@ -14,7 +14,7 @@ using Microsoft.Extensions.Options;
 namespace Actio.Services.Identity
 {
     public class Startup
-    {
+    {//
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
