@@ -1,6 +1,7 @@
 using System;
 using Actio.Common.Commands;
 using Actio.Common.Events;
+using Actio.Common.RabbitMq;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -74,7 +75,7 @@ namespace Actio.Common.Services
             {
                 var handler = (ICommandHandler<TCommand>)_webHost.Services
                             .GetService(typeof(ICommandHandler<TCommand>));
-                //_bus.WithCommandHandlerAsync(handler);
+                _bus.WithCommandHandlerAsync(handler);
 
                 return this;
             }
@@ -82,7 +83,7 @@ namespace Actio.Common.Services
             {
                 var handler = (IEventHandler<TEvent>)_webHost.Services
                             .GetService(typeof(IEventHandler<TEvent>));
-                //_bus.WithEventHandlerAsync(handler);
+                _bus.WithEventHandlerAsync(handler);
 
                 return this;
             }
