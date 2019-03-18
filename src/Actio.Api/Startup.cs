@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Actio.Api.Handlers;
 using Actio.Common.Events;
+using Actio.Common.Mongo;
 using Actio.Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,9 @@ namespace Actio.Api
 
             services.AddRabbitMq(Configuration);
 
-            var testes = Configuration.GetSection("Hello").Get<string>();
+            //var testes = Configuration.GetSection("Hello").Get<string>();
+
+            services.AddMongoDB(Configuration);
 
             services.AddScoped<IEventHandler<ActivityCreated>, ActivityCreatedHandler>();
         }
