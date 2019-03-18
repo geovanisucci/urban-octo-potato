@@ -32,6 +32,8 @@ namespace Actio.Api
 
             services.AddRabbitMq(Configuration);
 
+            var testes = Configuration.GetSection("Hello").Get<string>();
+
             services.AddScoped<IEventHandler<ActivityCreated>, ActivityCreatedHandler>();
         }
 
